@@ -701,7 +701,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_id",
 						"type": "uint256"
 					}
 				],
@@ -864,9 +864,6 @@
 				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				},
-				"uri(uint256)": {
-					"details": "See {IERC1155MetadataURI-uri}. This implementation returns the same URI for *all* token types. It relies on the token type ID substitution mechanism https://eips.ethereum.org/EIPS/eip-1155#metadata[defined in the EIP]. Clients calling this function must replace the `\\{id\\}` substring with the actual token type ID."
 				}
 			},
 			"version": 1
@@ -989,6 +986,14 @@
 				"dweb:/ipfs/QmTHiadFCSJUPpRjNegc5SahmeU8bAoY8i9Aq6tVscbcKR"
 			]
 		},
+		"@openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0x55f102ea785d8399c0e58d1108e2d289506dde18abc6db1b7f68c1f9f9bc5792",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e52e0a7765c943ef14e5bcf11e46e6139fa044be564881378349236bf2e3453",
+				"dweb:/ipfs/QmZEeeXoFPW47amyP35gfzomF9DixqqTEPwzBakv6cZw6i"
+			]
+		},
 		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
 			"keccak256": "0x9e8778b14317ba9e256c30a76fd6c32b960af621987f56069e1e819c77c6a133",
 			"license": "MIT",
@@ -1013,12 +1018,20 @@
 				"dweb:/ipfs/QmQyRpyPRL5SQuAgj6SHmbir3foX65FJjbVTTQrA2EFg6L"
 			]
 		},
-		"contracts/ElevenFiftyFive.sol": {
-			"keccak256": "0x32e0fc4d586648edc6a1a31ea40538527c72c7470517e9d60d208177e0ba21a9",
+		"@openzeppelin/contracts/utils/math/SignedMath.sol": {
+			"keccak256": "0x5f7e4076e175393767754387c962926577f1660dd9b810187b9002407656be72",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://327673b41ce0a5b59bb4336dfa0e4dc9a05d72d3b47e917948485183bb41e428",
-				"dweb:/ipfs/QmP4bqsy7i3XxfctNfwxPqTVFQv1CG8jsAHR4M62S2XKVu"
+				"bzz-raw://7d533a1c97cd43a57cd9c465f7ee8dd0e39ae93a8fb8ff8e5303a356b081cdcc",
+				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
+			]
+		},
+		"contracts/ElevenFiftyFive.sol": {
+			"keccak256": "0x79018c0f1163c7839c2bd733f8bed99b2c555fa734bfde8a841b73b1a22e0244",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://338cce189c780329257bde977645d1fccddefe65404d7761a7b516fa8d6574de",
+				"dweb:/ipfs/QmWFrKHnzkYGXVsQFrrb53BjbA6f3qLLgt2wxNSu9TvQB6"
 			]
 		}
 	},
