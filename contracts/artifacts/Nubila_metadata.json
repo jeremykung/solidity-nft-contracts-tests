@@ -517,21 +517,16 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "maxPerWallet",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "mint",
-				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -606,6 +601,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "publicMint",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -836,6 +849,25 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "walletPurchases",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -1165,11 +1197,11 @@
 			]
 		},
 		"contracts/ElevenFiftyFive.sol": {
-			"keccak256": "0x30f21460166e897692d623a5f5a8ff1b4a71b6a692fca5689f12c659d6dc5977",
+			"keccak256": "0x320d67ec6ce1df4dbb7d1be189c75c294345691f32ef9dd4464fec5cebc85587",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d02febea00b7a1a46e8405a4dfb9576d0dc3d2c4bae23b4a92e49a278987fe3b",
-				"dweb:/ipfs/Qmc6d8WrQ1CNVaS2RKdbRQkc7fT5BWLbcfSAGJ51ogHmSR"
+				"bzz-raw://0b7d249b7fb78c2bc4d4ff9b485d7cdfa117f944c9770b04ef96696988d3d5e9",
+				"dweb:/ipfs/QmRR8LcfnzgKN8taZJRkdn2X4AYknhzWcmGa5NeoYfqEpj"
 			]
 		}
 	},

@@ -13,11 +13,13 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     uint256 public allowListPrice = 0.001 ether;
     uint256 public oneTokenMaxSupply = 2;   // owners per nft
     uint256 public allTokenMaxSupply = 10;  // nft max supply
+    uint public maxPerWallet = 3;
 
     bool public publicMintOpen = false;
     bool public allowListMintOpen = false;
 
     mapping(address => bool) public allowList;
+    mapping(address => uint) public walletPurchases;
 
     constructor(address initialOwner) ERC1155("ipfs://QmY8sn9cp4FmrVcQebSyhoN4196XkWdNmfMSrpWVnxWJLp/") Ownable(initialOwner) {}
 
@@ -51,21 +53,25 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     function allowListMint(uint256 id, uint256 amount) public payable {
         require(allowListMintOpen, "Allow list mint closed.");
         require(allowList[msg.sender], "You are not on the allow list!");
-        require(id <= 10, "Minting wrong token number (only 0-10 tokens)");
-        require(totalSupply(id) + amount <= oneTokenMaxSupply, "Max supply for token reached.");
         require(msg.value == allowListPrice * amount, "not enough funds, 0.001 ETH per mint");
-        _mint(msg.sender, id, amount, "");
+        mint(id, amount);
     }
 
-    function mint(uint256 id, uint256 amount)
+    function publicMint(uint256 id, uint256 amount)
         public
         payable
     {
         require(publicMintOpen, "Public mint is closed.");
+        require(msg.value == publicPrice * amount, "Not enough funds, requires 0.01 ETH");
+        mint(id, amount);
+    }
+
+    function mint(uint256 id, uint256 amount) internal {
         require(id <= 10, "Minting wrong token number (only 0-10 tokens)");
         require(totalSupply(id) + amount <= oneTokenMaxSupply, "Max supply for token reached.");
-        require(msg.value == publicPrice * amount, "Not enough funds, requires 0.01 ETH");
+        require(walletPurchases[msg.sender] + amount <= maxPerWallet, "Only 3 NFTs allowed per wallet!");
         _mint(msg.sender, id, amount, "");
+        walletPurchases[msg.sender] += amount;
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
