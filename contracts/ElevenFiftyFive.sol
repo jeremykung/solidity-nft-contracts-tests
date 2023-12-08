@@ -6,8 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 
-contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
+contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply, PaymentSplitter {
 
     uint256 public publicPrice = 0.01 ether;
     uint256 public allowListPrice = 0.001 ether;
@@ -21,7 +22,15 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     mapping(address => bool) public allowList;
     mapping(address => uint) public walletPurchases;
 
-    constructor(address initialOwner) ERC1155("ipfs://QmY8sn9cp4FmrVcQebSyhoN4196XkWdNmfMSrpWVnxWJLp/") Ownable(initialOwner) {}
+    constructor(
+            address _initialOwner, 
+            address[] memory _payees,
+            uint256[] memory _shares
+        ) 
+        ERC1155("ipfs://QmY8sn9cp4FmrVcQebSyhoN4196XkWdNmfMSrpWVnxWJLp/") 
+        Ownable(_initialOwner)
+        PaymentSplitter(_payees, _shares)
+    {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
