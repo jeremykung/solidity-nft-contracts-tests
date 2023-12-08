@@ -17,6 +17,8 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
     bool public publicMintOpen = false;
     bool public allowListMintOpen = false;
 
+    mapping(address => bool) public allowList;
+
     constructor(address initialOwner) ERC1155("ipfs://QmY8sn9cp4FmrVcQebSyhoN4196XkWdNmfMSrpWVnxWJLp/") Ownable(initialOwner) {}
 
     function setURI(string memory newuri) public onlyOwner {
@@ -31,6 +33,16 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
         _unpause();
     }
 
+    function setAllowList(address[] calldata _addresses) external onlyOwner {
+        for (uint256 i = 0; i < _addresses.length; i++) {
+            allowList[_addresses[i]] = true;
+        }
+    }
+
+    function addAllowList(address _address, bool _allowed) external onlyOwner {
+        allowList[_address] = _allowed;
+    }
+
     function editMintWindows(bool _publicMintOpen, bool _allowListMintOpen) external onlyOwner {
         publicMintOpen = _publicMintOpen;
         allowListMintOpen = _allowListMintOpen;
@@ -38,6 +50,7 @@ contract Nubila is ERC1155, Ownable, ERC1155Pausable, ERC1155Supply {
 
     function allowListMint(uint256 id, uint256 amount) public payable {
         require(allowListMintOpen, "Allow list mint closed.");
+        require(allowList[msg.sender], "You are not on the allow list!");
         require(id <= 10, "Minting wrong token number (only 0-10 tokens)");
         require(totalSupply(id) + amount <= oneTokenMaxSupply, "Max supply for token reached.");
         require(msg.value == allowListPrice * amount, "not enough funds, 0.001 ETH per mint");

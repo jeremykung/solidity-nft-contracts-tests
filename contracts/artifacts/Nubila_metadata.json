@@ -314,6 +314,24 @@
 				"type": "event"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_allowed",
+						"type": "bool"
+					}
+				],
+				"name": "addAllowList",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "allTokenMaxSupply",
 				"outputs": [
@@ -321,6 +339,25 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "allowList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -666,6 +703,19 @@
 					}
 				],
 				"name": "safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_addresses",
+						"type": "address[]"
+					}
+				],
+				"name": "setAllowList",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -1115,11 +1165,11 @@
 			]
 		},
 		"contracts/ElevenFiftyFive.sol": {
-			"keccak256": "0x9c79241c11011e0f685e87aec0dc3d0e33b70dd1502deca7131fc4e7a1141ef0",
+			"keccak256": "0x30f21460166e897692d623a5f5a8ff1b4a71b6a692fca5689f12c659d6dc5977",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4893b9d46d89693c5d6af2dd6ac729d94391ae2c788f0dfbdcaaaa58bfe2823f",
-				"dweb:/ipfs/QmTCuAV5EyfL9PNaTvRcZroTZMjmGwSRX7jnFk6qZdomvg"
+				"bzz-raw://d02febea00b7a1a46e8405a4dfb9576d0dc3d2c4bae23b4a92e49a278987fe3b",
+				"dweb:/ipfs/Qmc6d8WrQ1CNVaS2RKdbRQkc7fT5BWLbcfSAGJ51ogHmSR"
 			]
 		}
 	},
