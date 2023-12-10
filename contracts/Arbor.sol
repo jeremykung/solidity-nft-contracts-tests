@@ -5,18 +5,22 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 
-contract Arbor is ERC721, ERC721Enumerable, ERC721Pausable, Ownable {
+
+contract Arbor is ERC721, ERC721Enumerable, ERC721Pausable, Ownable, PaymentSplitter {
     uint256 private _nextTokenId;
     uint256 public maxSupply = 100;
+
     bool public publicMintOpen = false;
     bool public allowListMintOpen = false;
     
     mapping(address => bool) public allowList;
 
-    constructor(address initialOwner)
+    constructor(address initialOwner, address[] memory _payees, uint[] memory _shares)
         ERC721("Arbor", "ABR")
         Ownable(initialOwner)
+        PaymentSplitter(_payees, _shares)
     {}
 
     function _baseURI() internal pure override returns (string memory) {
@@ -60,6 +64,11 @@ contract Arbor is ERC721, ERC721Enumerable, ERC721Pausable, Ownable {
             allowList[addresses[i]] = true;
         }
     }
+
+    function addAllowList(address _address, bool _allowed) external onlyOwner {
+        allowList[_address] = _allowed;
+    }
+
 
     function withdraw(address _address) external onlyOwner {
         uint256 balance = address(this).balance;
