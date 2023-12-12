@@ -517,6 +517,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "baseTokenURI",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contractURI",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "bool",
@@ -998,7 +1024,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "tokenId",
+						"name": "_tokenId",
 						"type": "uint256"
 					}
 				],
@@ -1010,7 +1036,7 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -1340,9 +1366,6 @@
 				"tokenOfOwnerByIndex(address,uint256)": {
 					"details": "See {IERC721Enumerable-tokenOfOwnerByIndex}."
 				},
-				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
-				},
 				"totalReleased()": {
 					"details": "Getter for the total amount of Ether already released."
 				},
@@ -1555,11 +1578,11 @@
 			]
 		},
 		"contracts/Arbor.sol": {
-			"keccak256": "0x76dc54e8560b2d457e79d093d4e47f606fcc78d7c3357ede11e9765ae45b3322",
+			"keccak256": "0x6c3fedd39b50d867b41acbca16a8a74c56dbea56ba7d8675952a80f492a445c3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f9ae65faac0efc5d4e0c58af54d6f26599b05194ac66ec31b621f3eec697f3b3",
-				"dweb:/ipfs/QmchPKSNYP2Kbt2ZTvbqYQ8EDKNMa1HK3oKR72ivnZ6bus"
+				"bzz-raw://61d67bf8a08201c1af93996ff696e2f4af4df86e66fdff8838daee1252b4eab8",
+				"dweb:/ipfs/QmV5EwaNVAsmEejQovDEbQLaZD7cRB7ZmM86gsZyA4ZQzm"
 			]
 		}
 	},

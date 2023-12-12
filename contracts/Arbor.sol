@@ -6,6 +6,9 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+
+using Strings for uint256;
 
 
 contract Arbor is ERC721, ERC721Enumerable, ERC721Pausable, Ownable, PaymentSplitter {
@@ -24,7 +27,19 @@ contract Arbor is ERC721, ERC721Enumerable, ERC721Pausable, Ownable, PaymentSpli
     {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://Qmauh3XxsrotPU7y5zzgyo9D3zDCHyUUfH9N9eXqXdgsn8";
+        return "ipfs://Qmauh3XxsrotPU7y5zzgyo9D3zDCHyUUfH9N9eXqXdgsn8/";
+    }
+
+    function contractURI() public pure returns (string memory) {
+        return "ipfs://QmNsho5SWG24YQSdPdKmHGWuZidY6ajtXguKRiz5noACvG";
+    }
+
+    function baseTokenURI() public pure returns (string memory) {
+        return _baseURI();
+    }
+
+    function tokenURI(uint256 _tokenId) public pure override returns (string memory) {
+        return string(abi.encodePacked(baseTokenURI(), Strings.toString(_tokenId), ".json"));
     }
 
     function pause() public onlyOwner {
